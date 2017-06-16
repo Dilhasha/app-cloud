@@ -120,7 +120,7 @@
 
             var modManager = jagg.module("manager");
             //Fix for session fization issue - WSOTWOCLOUD-769
-            jagg.setNewUserSession(fullUsername);
+            jagg.setUser(fullUsername);
             //Set the new session id
             sessionId = session.getId();
             ssoRelyingParty.setSessionAuthenticated(sessionId, samlResponse);

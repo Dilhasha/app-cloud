@@ -49,6 +49,10 @@ jagg.template("sso/filter", function(inputs, outputs, jagg) { %>
 	}
 	if (checkSSO && !Boolean(isAuthenticated)) {
 
+	    //Create a new user session and initiate SAML login - Fix session fixation issue
+	    jagg.setNewUserSession();
+	    sessionId = session.getId();
+
 	    ssoRelyingParty.setProperty("identityProviderURL", site.ssoConfiguration.identityProviderURL);
 	    ssoRelyingParty.setProperty("keyStorePassword", site.ssoConfiguration.keyStorePassword);
 	    ssoRelyingParty.setProperty("identityAlias",site.ssoConfiguration.identityAlias);
